@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+## React Refresh Token with JWT and Axios Interceptors example
+
+![react-refresh-token-jwt-axios-interceptors-flow](react-refresh-token-jwt-axios-interceptors-flow.png)
+
+For more detail, please visit:
+> [React Refresh Token with JWT and Axios Interceptors](https://www.bezkoder.com/react-refresh-token/)
+
+> [React JWT Authentication & Authorization example](https://bezkoder.com/react-jwt-auth/)
+
+Fullstack (JWT Authentication & Authorization example):
+> [React + Spring Boot](https://bezkoder.com/spring-boot-react-jwt-auth/)
+
+> [React + Node.js Express](https://bezkoder.com/react-express-authentication-jwt/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Set port
+.env
+```
+PORT=8081
+```
+
+## Note:
+Open `src/services/api.js` and modify `config.headers` for appropriate back-end (found in the tutorial).
+
+```js
+instance.interceptors.request.use(
+  (config) => {
+    const token = TokenService.getLocalAccessToken();
+    if (token) {
+      // config.headers["Authorization"] = 'Bearer ' + token;  // for Spring Boot back-end
+      config.headers["x-access-token"] = token; // for Node.js Express back-end
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+```
+
+## Project setup
 
 In the project directory, you can run:
 
-### `yarn start`
+```
+npm install
+# or
+yarn install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+or
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Compiles and hot-reloads for development
 
-### `yarn test`
+```
+npm start
+# or
+yarn start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
-### `yarn build`
+The page will reload if you make edits.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Related Posts
+> [In-depth Introduction to JWT-JSON Web Token](https://bezkoder.com/jwt-json-web-token/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> [React.js CRUD example to consume Web API](https://bezkoder.com/react-crud-web-api/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> [React Pagination example](https://bezkoder.com/react-pagination-material-ui/)
 
-### `yarn eject`
+> [React File Upload with Axios and Progress Bar to Rest API](https://bezkoder.com/react-file-upload-axios/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Fullstack (JWT Authentication & Authorization example):
+> [React + Spring Boot](https://bezkoder.com/spring-boot-react-jwt-auth/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> [React + Node.js Express](https://bezkoder.com/react-express-authentication-jwt/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+CRUD with Node.js Express:
+> [React.js + Node.js Express + MySQL](https://bezkoder.com/react-node-express-mysql/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+> [React.js + Node.js Express + PostgreSQL](https://bezkoder.com/react-node-express-postgresql/)
 
-## Learn More
+> [React.js + Node.js Express + MongoDB](https://bezkoder.com/react-node-express-mongodb-mern-stack/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CRUD with Spring Boot:
+> [React.js + Spring Boot + MySQL](https://bezkoder.com/react-spring-boot-crud/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> [React.js + Spring Boot + PostgreSQL](https://bezkoder.com/spring-boot-react-postgresql/)
 
-### Code Splitting
+> [React.js + Spring Boot + MongoDB](https://bezkoder.com/react-spring-boot-mongodb/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+CRUD with Django:
+> [React.js + Django Rest Framework](https://bezkoder.com/django-react-axios-rest-framework/)
 
-### Analyzing the Bundle Size
+Serverless:
+> [React Firebase CRUD App with Realtime Database](https://bezkoder.com/react-firebase-crud/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> [React Firestore CRUD App example | Firebase Cloud Firestore](https://bezkoder.com/react-firestore-crud/)
 
-### Making a Progressive Web App
+Integration (run back-end & front-end on same server/port)
+> [Integrate React with Spring Boot](https://bezkoder.com/integrate-reactjs-spring-boot/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> [Integrate React with Node.js Express](https://bezkoder.com/integrate-react-express-same-server-port/)
